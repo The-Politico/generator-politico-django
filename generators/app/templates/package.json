@@ -1,0 +1,11 @@
+{
+  "name": "<%= appName %>-staticapp",
+  "version": "1.0.0",
+  "description": "Static assets for <%= appName %>, a Django app at Politico.",
+  "main": "./src/js/main-app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
