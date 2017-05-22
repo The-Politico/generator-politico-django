@@ -1,4 +1,4 @@
-![Politico][logo]
+![POLITICO](https://rawgithub.com/The-Politico/src/master/images/logo/badge.png)
 
 # generator-politico-django [![npm version](https://badge.fury.io/js/generator-politico-django.svg)](https://badge.fury.io/js/generator-politico-django)
 
@@ -80,5 +80,3 @@ This helps you write more modular code.
 ## Developing
 
 To develop, clone this repository and use `npm link` to test changes locally before publishing updates.
-
-[logo]: logo.png "Logo"
