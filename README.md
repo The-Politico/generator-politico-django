@@ -1,6 +1,6 @@
 ![POLITICO](https://rawgithub.com/The-Politico/src/master/images/logo/badge.png)
 
-# generator-politico-django [![npm version](https://badge.fury.io/js/generator-politico-django.svg)](https://badge.fury.io/js/generator-politico-django)
+# generator-politico-django [![npm](https://img.shields.io/npm/v/generator-politico-django.svg)](https://www.npmjs.com/package/generator-politico-django)
 
 
 A [Yeoman](http://yeoman.io) generator to scaffold a static assets development environment inside a Django app.
@@ -16,7 +16,7 @@ Make sure you have [node](https://docs.npmjs.com/getting-started/installing-node
 
 Then install [gulp](http://gulpjs.com/), [yeoman](http://yeoman.io/) and this generator, globally*:
 ```
-$ npm install -g gulp-cli yo generator-politico-django
+$ npm install -g gulp-cli yo generator-politico-interactives generator-politico-django
 ```
 _\* You may need to prefix with `sudo`_
 

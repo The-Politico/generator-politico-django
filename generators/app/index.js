@@ -12,7 +12,7 @@ module.exports = class extends Generator {
     });
   }
   subgen() {
-    this.composeWith(require.resolve('generator-politico-interactives/generators/linters'));
+    this.composeWith('politico-interactives:linters');
   }
   writing() {
     // Package meta
@@ -52,16 +52,23 @@ module.exports = class extends Generator {
   install() {
     const dependencies = [
       'babel-preset-es2015',
+      'babel-preset-react',
       'babelify',
       'browserify',
       'event-stream',
       'glob',
       'gulp',
+      'gulp-babili',
+      'gulp-cssnano',
+      'gulp-if',
       'gulp-rename',
       'gulp-sass',
       'gulp-sourcemaps',
       'gulp-uglify',
       'gulp-util',
+      'react',
+      'react-dom',
+      'reactify',
       'vinyl-buffer',
       'vinyl-source-stream',
     ];
