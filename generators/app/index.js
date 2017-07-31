@@ -39,6 +39,11 @@ module.exports = class extends Generator {
       this.templatePath('gulp/tasks/dev.js'),
       this.destinationPath('gulp/tasks/dev.js'));
     this.fs.copyTpl(
+      this.templatePath('gulp/tasks/build.js'),
+      this.destinationPath('gulp/tasks/build.js'), {
+        appName: this.appName,
+      });
+    this.fs.copyTpl(
       this.templatePath('gulp/server/server.js'),
       this.destinationPath('gulp/server/server.js'), {
         staticUrl: this.staticUrl,
