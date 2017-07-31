@@ -5,4 +5,6 @@
 
 A [Yeoman](http://yeoman.io) generator to scaffold a modern front-end development environment inside a Django app.
 
+It uses [Webpack](https://webpack.github.io/), [Babel](https://babeljs.io/) and [SCSS](http://sass-lang.com/).
+
 See the docs on [readthedocs](http://generator-politico-django.readthedocs.io/en/latest/).

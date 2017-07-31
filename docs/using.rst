@@ -4,7 +4,7 @@ Using
 Concepts
 --------
 
-The generator builds the structure for a lightweight application that will compile your static assets using Webpack. It uses `Gulp <https://gulpjs.com/>`_ to run the tasks needed to develop and build your scripts.
+The generator builds the structure for a lightweight application that will compile your static assets using Webpack. It uses `Gulp <https://gulpjs.com/>`_ to run the tasks needed to develop and build your scripts for production.
 
 In development, the app will use a tiny `Express <https://expressjs.com/>`_ server to proxy Django's development server, serve your static files and push changes to your browser using `Hot Module Replacement <https://webpack.github.io/docs/hot-module-replacement.html>`_.
 
@@ -64,9 +64,9 @@ JavaScript
 
 Write your scripts using modern `ES2015 <https://babeljs.io/learn-es2015/>`_ syntax. Babel transforms for React/JSX are also included by default.
 
-In order to build separate modules for different views in your app, Webpack will look for bundles using a glob pattern :code:`main-*.js*`. So simply prefix any JS or JSX files with :code:`main-` to create a new module.
+In order to build separate scripts for different views in your app, Webpack will look for bundles using a glob pattern :code:`main-*.js*`. So simply prefix any JS or JSX files with :code:`main-` to create a new bundle.
 
-For example, these modules will be compiled into a single script, :code:`main-app.js`:
+For example, these scripts will be compiled into a single bundle, :code:`main-app.js`:
 
 .. code-block:: javascript
 
@@ -118,7 +118,7 @@ In your Django templates, you can reference scripts and styles using Django's `s
 
 In development, the Express proxy server will serve your JavaScript modules at the location of your app's static directory. For example: :code:`localhost:3000/static/myapp/js/main-app.js`.
 
-Your styles will be delivered by the Express proxy server in your JavaScript bundle and injected onto the page. (This lets Webpack automatically refresh your styles as you develop.) That mean's you should see a 404 error in your template for your link tag in development.
+Your styles will be delivered by the Express proxy server in your JavaScript bundle and injected onto the page. This lets Webpack automatically refresh your styles as you develop.
 
 .. note::
 
@@ -159,8 +159,8 @@ Your styles will be delivered by the Express proxy server in your JavaScript bun
 
 
 
-Building assets
----------------
+Building production assets
+--------------------------
 
 Once you've finished developing assets. Run Gulp's build task inside your :code:`staticapp` directory:
 
@@ -168,4 +168,4 @@ Once you've finished developing assets. Run Gulp's build task inside your :code:
 
   $ gulp build
 
-This will minify your bundles, separate CSS bundles and move script and stylesheets to your app's static files folder.
+This will minify your bundles, separate CSS bundles and move scripts and stylesheets to your app's static files folder.
