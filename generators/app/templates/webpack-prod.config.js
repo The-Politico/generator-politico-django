@@ -15,7 +15,7 @@ module.exports = {
     glob.sync('./src/js/main-*.js*')
   ),
   output: {
-    path: path.resolve(__dirname, '../<%= staticUrl %>/<%= appName %>'),
+    path: path.resolve(__dirname, '../static/<%= appName %>'),
     filename: 'js/[name].js',
   },
   module: {

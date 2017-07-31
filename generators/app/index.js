@@ -63,7 +63,6 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('webpack-prod.config.js'),
       this.destinationPath('webpack-prod.config.js'), {
-        staticUrl: this.staticUrl,
         appName: this.appName,
       });
     this.fs.copy(
