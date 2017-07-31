@@ -1,8 +1,6 @@
 const gulp = require('./gulp')([
-  'scss',
-  'browserify',
-  'watch',
+  'dev',
+  'build',
 ]);
 
-gulp.task('build', ['scss', 'browserify', 'watch']);
-gulp.task('default', ['build']);
+gulp.task('default', ['dev']);

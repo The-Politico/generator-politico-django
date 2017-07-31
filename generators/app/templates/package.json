@@ -7,10 +7,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "browserify": {
-    "transform": [
-      "reactify"
-    ]
-  },
+  "license": "ISC"
 }
