@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-
 module.exports = {
   mode: 'production',
   resolve: {
@@ -17,7 +16,7 @@ module.exports = {
       '@babel/polyfill',
       'whatwg-fetch',
       f,
-    ]),
+    ])
   ),
   output: {
     path: path.resolve(__dirname, '../static/<%= appName %>'),

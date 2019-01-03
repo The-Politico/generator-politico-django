@@ -17,7 +17,7 @@ const config = (env, argv, port) => ({
       '@babel/polyfill',
       'whatwg-fetch',
       f,
-    ]),
+    ])
   ),
   output: {
     path: path.resolve(__dirname, '../static/<%= appName %>'),

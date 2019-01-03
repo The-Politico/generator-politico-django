@@ -54,6 +54,7 @@ module.exports = class extends Generator {
       'babel-preset-env',
       'babel-preset-es2015',
       'babel-preset-react',
+      'eslint@4.19.1',
       'express',
       'express-http-proxy',
       'extract-text-webpack-plugin',

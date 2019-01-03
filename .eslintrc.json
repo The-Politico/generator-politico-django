@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "root": true,
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "semi": ["error", "always"],
+    "comma-dangle": ["error", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+    }],
+    "operator-linebreak": ["error", "after"],
+    "space-before-function-paren": ["error", "never"]
+  },
+  "extends": ["standard"]
+}
