@@ -11,10 +11,12 @@
     "lodash": "*",
     "politico-style": "*",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "whatwg-fetch": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.56",
+    "babel-loader": "^8.0.0-beta",
     "@babel/node": "^7.0.0",
     "@babel/plugin-external-helpers": "^7.0.0-beta.56",
     "@babel/plugin-proposal-class-properties": "^7.0.0-rc.1",
@@ -26,10 +28,14 @@
     "eslint": "*",
     "mini-css-extract-plugin": "*",
     "optimize-css-assets-webpack-plugin": "*",
+    "node-sass": "*",
     "portfinder": "*",
     "sass-loader": "*",
     "style-loader": "*",
     "uglifyjs-webpack-plugin": "*",
+    "webpack": "*",
+    "webpack-cli": "*",
+    "webpack-dev-server": "*",
     "yargs": "*"
   }
 }

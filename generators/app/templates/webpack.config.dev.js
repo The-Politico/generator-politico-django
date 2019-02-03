@@ -35,7 +35,7 @@ const config = (env, argv, port) => ({
       },
       // Uncomment if proxying websockets...
       // '/ws': {
-      //   target: 'ws://localhost:8000/',
+      //   target: `ws://localhost:${argv.proxy}/`,
       //   ws: true,
       // },
     },

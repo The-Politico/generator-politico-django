@@ -49,6 +49,6 @@ module.exports = class extends Generator {
     this.yarnInstall();
   }
   end() {
-    this.log('Done building you development environment. Run "yarn start" to start working!');
+    this.log('🏁 Done building your development environment. \n\n ⚙️ Run "yarn start" to get going!');
   }
 };
