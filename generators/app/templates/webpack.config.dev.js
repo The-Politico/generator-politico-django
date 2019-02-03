@@ -2,7 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const _ = require('lodash');
 const portfinder = require('portfinder');
-const argv = require('yargs').default('proxy', '8000').argv;
+const args = require('yargs').default('proxy', '8000').argv;
 
 portfinder.basePort = 3000;
 
@@ -31,7 +31,7 @@ const config = (env, argv, port) => ({
     contentBase: false,
     proxy: {
       '/': {
-        target: `http://localhost:${argv.proxy}`,
+        target: `http://localhost:${args.proxy}`,
       },
       // Uncomment if proxying websockets...
       // '/ws': {
