@@ -40,45 +40,15 @@ module.exports = class extends Generator {
       });
     this.fs.copy(
       this.templatePath('eslintrc.json'),
-      this.destinationPath('.eslintrc.json'));
+      this.destinationPath('./.eslintrc.json'));
     this.fs.copy(
       this.templatePath('gitignore'),
       this.destinationPath('./.gitignore'));
   }
   install() {
-    const dependencies = [
-      'autoprefixer',
-      'babel-core',
-      'babel-eslint',
-      'babel-loader',
-      'babel-preset-env',
-      'babel-preset-es2015',
-      'babel-preset-react',
-      'eslint@4.19.1',
-      'express',
-      'express-http-proxy',
-      'extract-text-webpack-plugin',
-      'fs-extra',
-      'glob',
-      'gulp',
-      'lodash',
-      'node-sass',
-      'open',
-      'optimize-css-assets-webpack-plugin',
-      'postcss-loader',
-      'react',
-      'react-dom',
-      'sass-loader',
-      'style-loader',
-      'webpack',
-      'webpack-dev-middleware',
-      'webpack-hot-middleware',
-      'webpack-stream',
-      'yargs',
-    ];
-    this.yarnInstall(dependencies, { save: true });
+    this.yarnInstall();
   }
   end() {
-    this.log('Done building you development environment. Run "gulp" to start working!');
+    this.log('Done building you development environment. Run "yarn start" to start working!');
   }
 };

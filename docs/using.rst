@@ -4,15 +4,15 @@ Using
 Concepts
 --------
 
-The generator builds the structure for a lightweight application that will compile your static assets using Webpack. It uses `Gulp <https://gulpjs.com/>`_ to run the tasks needed to develop and build your scripts for production.
+The generator builds the structure for a lightweight application that will compile your static assets using Webpack.
 
-In development, the app will use a tiny `Express <https://expressjs.com/>`_ server to proxy Django's development server, serve your static files and push changes to your browser using `Hot Module Replacement <https://webpack.github.io/docs/hot-module-replacement.html>`_.
+In development, the app will proxy Django's development server, serve your static files and push changes to your browser using `Hot Module Replacement <https://webpack.github.io/docs/hot-module-replacement.html>`_.
 
 After you're done developing, the app will build your static assets, which will minify scripts and styles and move them to the normal static directory of your app, i.e., :code:`js/` and :code:`css/` directories.
 
 .. warning::
 
-  This app presumes your static directory is structured in the standard Django way. For example: :code:`<your app>/static/<your app>/js/`
+  This app presumes your static directory is structured in the `standard Django way using namespacing <https://docs.djangoproject.com/en/dev/intro/tutorial06/#customize-your-app-s-look-and-feel>`_. For example: :code:`<your app>/static/<your app>/js/`
 
 Setup
 -----
@@ -38,25 +38,17 @@ Setup
 Developing assets
 -----------------
 
-To begin developing assets, simply start the Gulp development pipeline in your :code:`staticapp` directory.
+To begin developing assets, simply start the development pipeline in your :code:`staticapp` directory.
 
 .. code::
 
-  $ gulp
+  $ yarn start
 
-During development, the app will start a small `Express <https://expressjs.com/>`_ server that will proxy Django's own default Web server, i.e., :code:`runserver`. You can customize the ports used by both Express and Django using the :code:`port` and :code:`proxy` arguments, respectively. They default to :code:`3000` and :code:`8000`.
+During development, the app will proxy Django's own default web server, i.e., :code:`runserver`. You can customize the proxied port number using the :code:`proxy` argument, which defaults to :code:`8000`.
 
 .. code::
 
-  $ gulp --port 3002 --proxy 8008
-
-.. note::
-
-  By default, gulp will run the command to start Django's development server. If you'd rather run it yourself, you can use the :code:`nopython` argument.
-
-  .. code::
-
-    $ gulp --nopython
+  $ yarn start --proxy 8008
 
 
 JavaScript
@@ -64,9 +56,9 @@ JavaScript
 
 Write your scripts using modern `ES2015 <https://babeljs.io/learn-es2015/>`_ syntax. Babel transforms for React/JSX are also included by default.
 
-In order to build separate scripts for different views in your app, Webpack will look for bundles using a glob pattern :code:`main-*.js*`. So simply prefix any JS or JSX files with :code:`main-` to create a new bundle.
+In order to build separate scripts for different views in your app, Webpack will look for bundle entries using a glob pattern :code:`main.*.js*`. So simply prefix any JS or JSX files with :code:`main.` to create a new bundle at the root of your :code:`src/` directory.
 
-For example, these scripts will be compiled into a single bundle, :code:`main-app.js`:
+For example, these scripts will be compiled into a single bundle, :code:`main.app.js`:
 
 .. code-block:: javascript
 
@@ -89,13 +81,13 @@ For example, these scripts will be compiled into a single bundle, :code:`main-ap
 SCSS
 ^^^^
 
-Import SCSS files in your JavaScript. Do it!
+Import SCSS files in your JavaScript.
 
 .. code-block:: javascript
 
-  import '../scss/main.scss';
+  import './theme/base.scss';;
 
-In development, your styles will be injected into your template via JavaScript. When you build your scripts for production, however, the styles will be exported into a separate CSS file in your static directory. See more in Django templates.
+As per the POLITICO `JS Apps Style Guide <https://docs.politicoapps.com/politico-newsroom-developer-guide/guides/front-end-apps>`_, SCSS files outside your :code:`theme/` directory will be imported as `CSS modules <https://github.com/css-modules/css-modules>`_.
 
 
 .. figure:: https://i.makeagif.com/media/7-08-2015/NACqoF.gif
@@ -111,43 +103,25 @@ In your Django templates, you can reference scripts and styles using Django's `s
 
   {% load static %}
 
-  <link rel="stylesheet" href="{% static '<your app>/css/main-app.css' %}" />
+  <link rel="stylesheet" href="{% static '<your app>/css/main.app.css' %}" />
 
-  <script src="{% static '<your app>/js/main-app.js' %}"></script>
+  <script src="{% static '<your app>/js/main.app.js' %}"></script>
 
 
-In development, the Express proxy server will serve your JavaScript modules at the location of your app's static directory. For example: :code:`localhost:3000/static/myapp/js/main-app.js`.
+In development, the development server will serve your JavaScript modules at the location of your app's static directory. For example: :code:`localhost:3000/static/myapp/js/main.app.js`.
 
-Your styles will be delivered by the Express proxy server in your JavaScript bundle and injected onto the page. This lets Webpack automatically refresh your styles as you develop.
+Your styles will be delivered within your JavaScript bundle and injected onto the page. This lets Webpack automatically refresh your styles as you develop.
 
 .. note::
 
   Because the proxy server serves your styles via JavaScript in development, you should see a 404 error in your template for your link tag.
 
-  When you build your scripts for production, the styles will be split into a separate file **named after your module.** For example, a module named :code:`main-app.js` that imports some SCSS files like this:
-
-  .. code-block:: javascript
-
-    // main-app.js
-    import '../scss/styles.scss';
-    import '../scss/dataviz.scss';
-
-  Will create a CSS bundle named after the module in your app's static folder:
-
-  .. code::
-
-    css/main-app.css
-
-  Which you can then reference in your template:
-
-  .. code-block:: django
-
-    <link rel="stylesheet" href="{% static '<your app>/css/main-app.css' %}" />
+  When you build your scripts for production, the styles will be split into a separate file **named after your module.** For example, a module named :code:`main.app.js` will split CSS styles to a stylesheet at :code:`css/main.app.css`.
 
 
 .. warning::
 
-  If you build your static assets and then return to using the development server, keep in mind, that your previously built styles may be included in your template. So using the above example, a stale :code:`main-app.css` may be referenced in your template.
+  If you build your static assets and then return to using the development server, keep in mind, that your previously built styles may be included in your template. So using the above example, a stale :code:`main.app.css` may be referenced in your template.
 
   If you're simply overwriting styles, the new styles will be injected after the reference to the stale built asset and shouldn't cause a problem, but any other style conflicts may show through.
 
@@ -166,6 +140,6 @@ Once you've finished developing assets. Run Gulp's build task inside your :code:
 
 .. code::
 
-  $ gulp build
+  $ yarn build
 
 This will minify your bundles, separate CSS bundles and move scripts and stylesheets to your app's static files folder.

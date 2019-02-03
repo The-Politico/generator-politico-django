@@ -7,6 +7,9 @@
     "build": "webpack --mode=production --config webpack.config.prod.js"
   },
   "dependencies": {
+    "classnames": "*",
+    "lodash": "*",
+    "politico-style": "*",
     "react": "*",
     "react-dom": "*"
   },
@@ -18,23 +21,15 @@
     "@babel/polyfill": "^7.0.0-beta.56",
     "@babel/preset-env": "^7.0.0-beta.56",
     "@babel/preset-react": "^7.0.0-beta.56",
-    "babel-eslint": "^10.0.1",
+    "@politico/eslint-config-interactives": "*",
     "css-loader": "*",
-    "eslint": "==4.19.1",
-    "eslint-config-standard": "==11.0.0",
-    "eslint-plugin-babel": "==5.1.0",
-    "eslint-plugin-emotion": "==9.2.5",
-    "eslint-plugin-import": "==2.13.0",
-    "eslint-plugin-node": "==6.0.1",
-    "eslint-plugin-promise": "==3.8.0",
-    "eslint-plugin-react": "==7.10.0",
-    "eslint-plugin-standard": "==3.1.0",
-    "lodash": "*",
+    "eslint": "*",
     "mini-css-extract-plugin": "*",
     "optimize-css-assets-webpack-plugin": "*",
     "portfinder": "*",
     "sass-loader": "*",
     "style-loader": "*",
-    "uglifyjs-webpack-plugin": "*"
+    "uglifyjs-webpack-plugin": "*",
+    "yargs": "*"
   }
 }
